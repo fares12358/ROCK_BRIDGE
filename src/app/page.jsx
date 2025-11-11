@@ -6,6 +6,18 @@ import useTranslation from "./lib/useTranslation";
 import Image from "next/image";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 
+const handleScroll = () => {
+  window.scrollTo({
+    top: 2350,
+    behavior: "smooth", // smooth scrolling
+  });
+};
+
+const handleEmail = () => {
+  window.location.href = "mailto:Window.ksa30@gmail.com";
+};
+
+
 /* --- Small UI blocks --- */
 function ServicePill({ icon, children }) {
   return (
@@ -34,16 +46,6 @@ function WhatsAppCard({ t }) {
         className="flex flex-col items-center justify-center gap-1 bg-[#25D366] text-white py-3 rounded-md font-semibold hover:bg-[#1ebe5b] transition"
       >
         <span className="text-lg">💬 {cta}</span> 
-        <span>+8613711197481</span>
-      </a>
-      <a
-        href="https://wa.me/+8660540846666"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex flex-col items-center justify-center gap-1 mt-2 bg-[#25D366] text-white py-3 rounded-md font-semibold hover:bg-[#1ebe5b] transition"
-      >
-        <span className="text-lg">💬 {cta}</span>
-        <span>+8660540846666</span>
       </a>
     </div>
   );
@@ -66,21 +68,19 @@ function ServicesSection({ t }) {
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-10">
-          <div className="flex items-center justify-center gap-3 mb-2">
-            <span className="w-1.5 h-6 bg-[#9d1e17] inline-block" />
-            <span className="text-sm text-[#9d1e17] font-bold uppercase">{heading}</span>
+          <div className="flex items-center justify-center gap-3 mb-5">
+            <span className="text-5xl text-[#9d1e17] font-bold uppercase">{heading}</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#003767] mb-2">{title}</h2>
+          <h2 className="text-2xl lg:text-3xl lg:text-4xl font-bold text-[#003767] mb-2">{title}</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">{subtitle}</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {cards.map((card) => (
+          {cards.map((card,index) => (
             <article key={card.title} className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
-              <div className="h-44 w-full bg-gray-100 flex items-center justify-center text-gray-400">
-                <span>{t?.servicesSection?.placeholderImage ?? "Image Placeholder"}</span>
+              <div className="h-44 w-full bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
+                <img src={t?.servicesSection?.placeholderImage[index]} alt={"Image Placeholder"} className="object-cover w-full h-full"/>
               </div>
-
               <div className="p-6 flex-1">
                 <h3 className="text-lg font-semibold mb-2">{card.title}</h3>
                 <p className="text-sm text-gray-600">{card.description ?? card.text}</p>
@@ -97,30 +97,29 @@ function ServicesSection({ t }) {
 function WhoAreWeSection({ t }) {
   const who = t?.who ?? {};
   return (
-    <section className="py-20 bg-white mt-50">
+    <section className="py-20 bg-white md:mt-50 ">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           <div>
-            <h3 className="text-sm text-[#9d1e17] font-bold uppercase mb-2">{who.heading ?? "Who are we?"}</h3>
+            <h3 className="text-4xl text-[#9d1e17] font-bold uppercase mb-2">{who.heading ?? "Who are we?"}</h3>
             <h2 className="text-2xl lg:text-3xl font-bold text-[#003767] mb-4">{who.company ?? "ROCK BRIDGE Import and Export Company"}</h2>
 
             <p className="text-gray-700 mb-4 leading-relaxed">{who.description ?? "We believe our success begins with an effective customer experience..."}</p>
 
-            <h4 className="font-semibold text-[#003767] mt-6">{who.visionTitle ?? "Our Vision"}</h4>
+            <h4 className="font-semibold text-2xl lg:text-3xl  text-[#003767] mt-6">{who.visionTitle ?? "Our Vision"}</h4>
             <p className="text-gray-700 mb-4">{who.visionText ?? ""}</p>
 
-            <h4 className="font-semibold text-[#003767] mt-4">{who.messageTitle ?? "Our Message"}</h4>
+            <h4 className="font-semibold text-2xl lg:text-3xl  text-[#003767] mt-4">{who.messageTitle ?? "Our Message"}</h4>
             <p className="text-gray-700">{who.messageText ?? ""}</p>
           </div>
 
           <div className="flex flex-col gap-6">
             <div className="rounded-xl overflow-hidden shadow-lg">
-              <Image src="/images/about.jpg" alt={who.company ?? "ROCK BRIDGE"} width={700} height={420} className="w-full h-auto object-cover" />
+              <Image src="/images/poster.png" alt={"ROCK BRIDGE"} width={700} height={420} className="w-full h-auto object-cover" />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="flex flex-col md:flex-row gap-4">
               <div className="bg-[#f8fafc] p-4 rounded-lg shadow">
-                <div className="text-xs text-gray-500">{t?.who?.experienceLabel ?? "Experience"}</div>
                 <div className="font-bold text-xl text-[#9d1e17]">{who.experienceCount ?? "16+"}</div>
                 <div className="text-sm text-gray-600">{t?.who?.experienceLabel ?? "Years Experience"}</div>
               </div>
@@ -152,8 +151,8 @@ function DistinguishSection({ t }) {
     <section className="py-16 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-8">
-          <h3 className="text-sm text-[#9d1e17] font-bold uppercase mb-2">{t?.distinguish?.heading ?? "What distinguishes us"}</h3>
-          <h2 className="text-2xl font-bold text-[#003767]">{t?.distinguish?.title ?? "Why choose ROCK BRIDGE"}</h2>
+          <h3 className="md:text-4xl text-2xl  text-[#9d1e17] font-bold uppercase mb-2">{t?.distinguish?.heading ?? "What distinguishes us"}</h3>
+          <h2 className="text-xl md:text-2xl font-bold text-[#003767]">{t?.distinguish?.title ?? "Why choose ROCK BRIDGE"}</h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -181,7 +180,7 @@ function CoreValuesSection({ t }) {
   return (
     <section className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-6 lg:px-8 text-center">
-        <h3 className="text-sm text-[#9d1e17] font-bold uppercase mb-2">{t?.coreValues?.heading ?? "Core Values"}</h3>
+        <h3 className="text-4xl text-[#9d1e17] font-bold uppercase mb-10">{t?.coreValues?.heading ?? "Core Values"}</h3>
         <h2 className="text-2xl font-bold text-[#003767] mb-6">{t?.coreValues?.title ?? "Our Principles"}</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -206,13 +205,13 @@ function TourismSection({ t }) {
         <div className="bg-white rounded-xl shadow-lg p-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
             <div>
-              <h3 className="text-sm text-[#9d1e17] font-bold uppercase mb-2">{tourism.heading ?? "Tourism"}</h3>
-              <h2 className="text-2xl font-bold text-[#003767] mb-4">{tourism.title ?? "A Unique Tourism Experience to China"}</h2>
+              <h3 className="text-4xl text-[#9d1e17] font-bold uppercase mb-10">{tourism.heading ?? "Tourism"}</h3>
+              <h2 className="text-xl md:text-2xl font-bold text-[#003767] mb-4">{tourism.title ?? "A Unique Tourism Experience to China"}</h2>
               <p className="text-gray-700 leading-relaxed">{tourism.text ?? ""}</p>
             </div>
 
             <div className="rounded-lg overflow-hidden shadow">
-              <div className="h-48 bg-gray-100 flex items-center justify-center text-gray-400">{t?.tourism?.placeholder ?? "Image Placeholder"}</div>
+              <div className="h-48 bg-gray-100 flex items-center justify-center text-gray-400"><img src="/images/tr.jpg" alt="tourism" /></div>
             </div>
           </div>
         </div>
@@ -233,14 +232,13 @@ function WhyChooseSection({ t }) {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-1 gap-10 items-center">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <span className="w-1.5 h-6 bg-[#9d1e17] inline-block" />
-              <span className="text-sm text-[#9d1e17] font-bold uppercase">{t?.why?.heading ?? "Why Choose Us"}</span>
+              <span className="text-4xl text-[#9d1e17] font-bold uppercase">{t?.why?.heading ?? "Why Choose Us"}</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#003767] mb-6">{t?.why?.title ?? "Ensuring Superior Logistics Solutions For Optimal Business Performance"}</h2>
+            <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-[#003767] mb-6">{t?.why?.title ?? "Ensuring Superior Logistics Solutions For Optimal Business Performance"}</h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {items.map((it) => (
@@ -255,14 +253,14 @@ function WhyChooseSection({ t }) {
             </div>
           </div>
 
-          <div className="flex items-center justify-center">
+          {/* <div className="flex items-center justify-center">
             <div className="relative rounded-lg overflow-hidden shadow-xl max-w-md w-full">
               <Image src="/images/why-choose.jpg" alt="Why choose us" width={720} height={480} className="w-full h-auto object-cover" priority />
               <a href="#" className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
                 <div className="w-16 h-16 bg-[#9d1e17] rounded-full flex items-center justify-center text-white text-2xl">▶</div>
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
@@ -342,22 +340,20 @@ function ContactCTA({ t }) {
   const contact = t?.contactCTA ?? {};
   return (
     <section className="py-20">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="relative bg-[#9d1e17] rounded-lg overflow-hidden">
+      <div className="">
+        <div className="relative bg-[#9d1e17] overflow-hidden py-10">
           <div className="absolute inset-0 bg-[#9d1e17]" />
-
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 items-center">
-            <div className="hidden lg:flex items-center justify-center relative pl-12">
-              <div className="relative w-[420px] h-[280px] -mb-8">
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-center">
+            <div className="flex items-center justify-center relative pl-12 w-fit">
+              <div className="relative w-[420px] h-[280px]">
                 <Image src="/images/van-2.png" alt="Delivery van" fill className="object-contain" sizes="(max-width: 1024px) 420px, 420px" />
               </div>
             </div>
-
-            <div className="p-12 lg:pr-20 lg:pl-8 text-white">
+            <div className="p-12 text-white">
               <h3 className="text-xl font-semibold mb-4">{contact.title ?? "Discuss Your Shipping Needs"}</h3>
               <h2 className="text-3xl lg:text-4xl font-bold mb-4">{contact.subtitle ?? "With Our Experts!"}</h2>
               <p className="text-white/90 max-w-xl mb-6">{contact.text ?? "Tristique pharetra nunc sed amet viverra..."}</p>
-              <a href="#" className="inline-block bg-white text-[#9d1e17] px-5 py-3 rounded-md font-semibold shadow">
+              <a href="#" className="inline-block bg-white text-[#9d1e17] px-5 py-3 rounded-md font-semibold shadow" onClick={handleEmail}>
                 {contact.cta ?? "Contact Us"}
               </a>
             </div>
@@ -372,13 +368,13 @@ function ContactCTA({ t }) {
 function NewsletterFooter({ t }) {
   const n = t?.newsletter ?? {};
   return (
-    <section className="max-w-7xl mx-auto px-6 lg:px-8 -mt-20 relative">
-      <div className="bg-[#08355a] rounded-xl shadow-xl p-8 flex flex-col md:flex-row items-center gap-6 md:gap-12">
+    <section className="max-w-7xl mx-auto px-6 lg:px-8 mt-20 relative -top-20">
+      <div className="bg-[#08355a] rounded-xl shadow-xl p-8 mt- flex flex-col md:flex-row items-center gap-6 md:gap-12">
         <div className="flex-1">
           <h3 className="text-2xl font-bold text-white mb-2">{n.title ?? "Subscribe Our Newsletter To Get The Latest News From Us!"}</h3>
           <p className="text-white/80 mb-4">{n.subtitle ?? "Sign up and stay updated with our latest offers and company news."}</p>
-          <div className="flex items-center gap-4">
-            <input type="email" placeholder={n.placeholder ?? "Your Email"} className="px-4 py-3 rounded-md w-full max-w-md" />
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            <input type="email" placeholder={n.placeholder ?? "Your Email"} className="px-4 py-3 rounded-md w-full max-w-md border focus:outline-none" />
             <button className="bg-[#9d1e17] text-white px-5 py-3 rounded-md font-semibold">{n.subscribe ?? "Subscribe"}</button>
           </div>
         </div>
@@ -399,24 +395,10 @@ function Footer({ t }) {
     <footer className="mt-16 bg-[#9d1e17] text-white">
       <NewsletterFooter t={t} />
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <Image src="/images/logo.png" alt={t?.site?.name ?? "ROCK BRIDGE"} width={160} height={48} className="object-contain mb-4" />
             <p className="text-white/80 mb-6">{footerAbout}</p>
-            <div className="flex items-center gap-3">
-              <a href="#" className="bg-white text-[#9d1e17] p-3 rounded-md">f</a>
-              <a href="#" className="bg-white text-[#9d1e17] p-3 rounded-md">x</a>
-              <a href="#" className="bg-white text-[#9d1e17] p-3 rounded-md">▶</a>
-              <a href="#" className="bg-white text-[#9d1e17] p-3 rounded-md">p</a>
-            </div>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-4">{t?.footer?.quickLinks ?? "Quick Link"}</h4>
-            <ul className="space-y-2 text-white/90">
-              <li><a href="#">{t?.nav?.home ?? "Home"}</a></li>
-              <li><a href="#">{t?.nav?.about ?? "About Us"}</a></li>
-              <li><a href="#">{t?.nav?.services ?? "Services"}</a></li>
-            </ul>
           </div>
       
           <div>
@@ -440,6 +422,9 @@ function Footer({ t }) {
         <div className="border-t border-white/10 mt-10 pt-6 text-center text-white/80">
           {(t?.footer?.copyright ?? "ROCK BRIDGE © {year}. All rights reserved.").replace("{year}", String(new Date().getFullYear()))}
         </div>
+        <div className="border-t border-white/10 mt-1 pt-1 text-center text-white/20">
+          Developed by Fares Mohamed
+        </div>
       </div>
     </footer>
   );
@@ -452,9 +437,9 @@ export default function Page() {
   const heroTag = t?.hero?.tagline ?? (t?.heroTagline ?? "LOGISTIC CARGO & TRANSPORTATION");
   const heroTitle = loading ? "..." : (t?.title ?? t?.hero?.title ?? "Connecting Your Business To The World Through Reliable Logistics");
   const heroCta = t?.hero?.cta ?? "Our Service";
-
+  
   return (
-    <main className="min-h-screen bg-white font-sans text-gray-900 relative overflow-x-hidden">
+    <main className="min-h-screen bg-white font-sans text-gray-900 relative ">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0 flex items-center justify-between">
@@ -462,7 +447,7 @@ export default function Page() {
             <Image src="/images/logo.png" alt={t?.site?.name ?? "ROCK BRIDGE"} width={100} height={50} className="object-contain" />
           </div>
           <div className="flex items-center gap-3">
-            <button className="bg-[#9d1e17] text-white px-3 py-2 rounded-md">{t?.nav?.contact ?? "Contact us"}</button>
+            <button className="bg-[#9d1e17] text-white px-3 py-2 rounded-md" onClick={handleEmail}>{t?.nav?.contact ?? "Contact us"}</button>
             <LanguageToggle />
           </div>
         </div>
@@ -474,13 +459,13 @@ export default function Page() {
       <section className="-mt-[520px] md:-mt-[600px] lg:-mt-[700px] max-w-7xl mx-auto px-6 sm:px-8 lg:px-0 relative">
         <div className="flex flex-col lg:flex-row items-start gap-8">
           <div className="w-full lg:w-1/2 z-20">
-            <p className="text-[#9d1e17] font-bold text-xs sm:text-sm tracking-wide border-l-2 pl-3 border-[#9d1e17] mb-6">{heroTag}</p>
+            <p className="text-[#9d1e17] font-bold text-[16px] sm:text-[20px] tracking-wide mb-6">{heroTag}</p>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#003767] leading-tight mb-6">{heroTitle}</h1>
 
             <div className="flex items-center gap-4 mb-8">
-              <a href="#" className="inline-block bg-[#003767] text-white font-semibold px-6 py-3 rounded-lg transition text-sm">
+              <button className="inline-block bg-[#003767] text-white font-semibold px-6 py-3 rounded-lg transition text-sm" onClick={handleScroll}>
                 {heroCta}
-              </a>
+              </button>
             </div>
 
             <div className="mt-8 lg:mt-20">
@@ -520,7 +505,7 @@ export default function Page() {
 
       {/* Keep existing helpful sections */}
       <WhyChooseSection t={t} />
-      <AboutUsSection t={t} />
+      {/* <AboutUsSection t={t} /> */}
       <ContactCTA t={t} />
 
       {/* utility and footer */}

@@ -26,7 +26,20 @@
     "heading": "Services",
     "title": "Services We Offer",
     "subheading": "We provide a wide range of services to support your business needs.",
-    "placeholderImage": "Image Placeholder",
+    "placeholderImage": [
+      "/images/im4.jpg",
+      "/images/im5.jpg",
+      "/images/im6.jpg",
+      "/images/im7.jpg",
+      "/images/im8.jpg",
+      "/images/im9.jpg",
+      "/images/im10.jpg",
+      "/images/im11.jpg",
+      "/images/im12.jpg",
+      "/images/im13.jpg",
+      "/images/im14.jpg",
+      "/images/im15.jpg"
+    ], 
     "cards": [
       {
         "title": "Tests and Quality Measurement",
@@ -100,20 +113,44 @@
     "heading": "What distinguishes us",
     "title": "Why choose ROCK BRIDGE",
     "items": [
-      { "title": "Experience", "text": "In-depth knowledge of the technical regulations and regulatory legislation of the target countries." },
-      { "title": "Speed", "text": "Reducing waiting time through the ability to complete processes from manufacturing and shipping to the final destination." },
-      { "title": "Prices", "text": "Guaranteed competitive prices and high quality through a wide network of factories and wholesale markets." },
-      { "title": "Compliance", "text": "Ensuring that products conform to private and governmental conditions and specifications." },
-      { "title": "Neutrality", "text": "We are a neutral third party that enhances transparency and credibility of commercial mediation." }
+      {
+        "title": "Experience",
+        "text": "In-depth knowledge of the technical regulations and regulatory legislation of the target countries."
+      },
+      {
+        "title": "Speed",
+        "text": "Reducing waiting time through the ability to complete processes from manufacturing and shipping to the final destination."
+      },
+      {
+        "title": "Prices",
+        "text": "Guaranteed competitive prices and high quality through a wide network of factories and wholesale markets."
+      },
+      {
+        "title": "Compliance",
+        "text": "Ensuring that products conform to private and governmental conditions and specifications."
+      },
+      {
+        "title": "Neutrality",
+        "text": "We are a neutral third party that enhances transparency and credibility of commercial mediation."
+      }
     ]
   },
   "coreValues": {
     "heading": "Core Values",
     "title": "Our Principles",
     "items": [
-      { "title": "Integrity", "text": "We operate with complete transparency and are honest in our dealings." },
-      { "title": "Accuracy", "text": "We are meticulous when approving applications to ensure all details are correct and meet specifications." },
-      { "title": "Leadership", "text": "We keep pace with the latest developments and changes in global trade systems to provide the best solutions." }
+      {
+        "title": "Integrity",
+        "text": "We operate with complete transparency and are honest in our dealings."
+      },
+      {
+        "title": "Accuracy",
+        "text": "We are meticulous when approving applications to ensure all details are correct and meet specifications."
+      },
+      {
+        "title": "Leadership",
+        "text": "We keep pace with the latest developments and changes in global trade systems to provide the best solutions."
+      }
     ]
   },
   "tourism": {
@@ -125,10 +162,22 @@
     "heading": "Why Choose Us",
     "title": "Ensuring Superior Solutions at ROCK BRIDGE For Optimal Business Performance",
     "items": [
-      { "title": "100% Guarantee", "text": "Tincidunt facilisis massa. Orci leo Nunc auctor dignissim." },
-      { "title": "Fast Response", "text": "Tincidunt facilisis massa. Orci leo Nunc auctor dignissim." },
-      { "title": "Experience Team", "text": "Tincidunt facilisis massa. Orci leo Nunc auctor dignissim." },
-      { "title": "Good Quality", "text": "Tincidunt facilisis massa. Orci leo Nunc auctor dignissim." }
+      {
+        "title": "100% Guarantee",
+        "text": "Tincidunt facilisis massa. Orci leo Nunc auctor dignissim."
+      },
+      {
+        "title": "Fast Response",
+        "text": "Tincidunt facilisis massa. Orci leo Nunc auctor dignissim."
+      },
+      {
+        "title": "Experience Team",
+        "text": "Tincidunt facilisis massa. Orci leo Nunc auctor dignissim."
+      },
+      {
+        "title": "Good Quality",
+        "text": "Tincidunt facilisis massa. Orci leo Nunc auctor dignissim."
+      }
     ]
   },
   "contactCTA": {
@@ -149,7 +198,7 @@
     "ourService": "Our Service",
     "contact": {
       "consultations": "Consultations",
-      "phone": "+8613711197481/+8660540846666",
+      "phone": "+8613711197481",
       "support": "Support",
       "email": "Window.ksa30@gmail.com"
     },
