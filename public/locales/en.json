@@ -1,0 +1,163 @@
+{
+  "title": "Connecting Your Business To The World Through ROCK BRIDGE",
+  "site": {
+    "name": "ROCK BRIDGE"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "pages": "Pages",
+    "blog": "Blog",
+    "contact": "Contact Us",
+    "quote": "Contact us"
+  },
+  "hero": {
+    "tagline": "ROCK BRIDGE - Import & Export",
+    "cta": "Our Service",
+    "subtitle": "We connect your business with global markets through ROCK BRIDGE solutions."
+  },
+  "whatsapp": {
+    "title": "Contact Us on WhatsApp",
+    "description": "Have questions or need assistance? Chat with our support team on WhatsApp for fast help.",
+    "cta": "Chat on WhatsApp"
+  },
+  "servicesSection": {
+    "heading": "Services",
+    "title": "Services We Offer",
+    "subheading": "We provide a wide range of services to support your business needs.",
+    "placeholderImage": "Image Placeholder",
+    "cards": [
+      {
+        "title": "Tests and Quality Measurement",
+        "description": "Professional service to support the process, ensuring compliance, quality and timely delivery."
+      },
+      {
+        "title": "Production lines and spare parts",
+        "description": "Professional service to support the process, ensuring compliance, quality and timely delivery."
+      },
+      {
+        "title": "Quotations and Consultations",
+        "description": "Professional service to support the process, ensuring compliance, quality and timely delivery."
+      },
+      {
+        "title": "Providing resources and inspecting goods",
+        "description": "Professional service to support the process, ensuring compliance, quality and timely delivery."
+      },
+      {
+        "title": "Project and tender insurance",
+        "description": "Professional service to support the process, ensuring compliance, quality and timely delivery."
+      },
+      {
+        "title": "Finishing and furnishing homes, hotels and companies",
+        "description": "Professional service to support the process, ensuring compliance, quality and timely delivery."
+      },
+      {
+        "title": "Providing commercial agencies",
+        "description": "Professional service to support the process, ensuring compliance, quality and timely delivery."
+      },
+      {
+        "title": "Manufacturing brands and trademark",
+        "description": "Professional service to support the process, ensuring compliance, quality and timely delivery."
+      },
+      {
+        "title": "Hotel reservations",
+        "description": "Professional service to support the process, ensuring compliance, quality and timely delivery."
+      },
+      {
+        "title": "Reception, transportation and translation",
+        "description": "Professional service to support the process, ensuring compliance, quality and timely delivery."
+      },
+      {
+        "title": "Insurance of goods and shipping",
+        "description": "Professional service to support the process, ensuring compliance, quality and timely delivery."
+      },
+      {
+        "title": "All commercial mediation services",
+        "description": "Professional service to support the process, ensuring compliance, quality and timely delivery."
+      }
+    ]
+  },
+  "who": {
+    "heading": "Who are we?",
+    "company": "ROCK BRIDGE Import and Export Company",
+    "description": "We believe our success begins with an effective customer experience. We offer a wide range of innovative and distinguished assets, solutions, and services. We are a Saudi company and we work according to your ambitions and goals from within the country, aligned with our culture and social values.",
+    "visionTitle": "Our Vision",
+    "visionText": "To be the leading and globally recognized entity in providing commercial mediation, empowerment and representation solutions through global markets with confidence and professionalism. Establish tangible strategic partnerships through integrated relationships based on the foundations and standards of common interests for growth, success and development.",
+    "messageTitle": "Our Message",
+    "messageText": "Providing reliable, comprehensive and impartial inspection and review services to ensure compliance with international requirements and specifications while adhering to the highest quality standards.",
+    "experienceLabel": "Years Experience",
+    "headquartersLabel": "Headquarters",
+    "headquartersValue": "Saudi Arabia"
+  },
+  "about": {
+    "heading": "About Us",
+    "title": "Reliability And Efficiency at ROCK BRIDGE",
+    "description": "Tristique pharetra nunc sed amet viverra non non libero. Eget turpis ac pretium amet dapibus nullam at bibendum. ROCK BRIDGE focuses on delivering reliable and efficient services that meet international standards.",
+    "quote": "Ut interdum in lacus vitae. Mauris non nibh non mauris eu velit egestas fames. Nisi in id consectetur etiam dignissim sed."
+  },
+  "distinguish": {
+    "heading": "What distinguishes us",
+    "title": "Why choose ROCK BRIDGE",
+    "items": [
+      { "title": "Experience", "text": "In-depth knowledge of the technical regulations and regulatory legislation of the target countries." },
+      { "title": "Speed", "text": "Reducing waiting time through the ability to complete processes from manufacturing and shipping to the final destination." },
+      { "title": "Prices", "text": "Guaranteed competitive prices and high quality through a wide network of factories and wholesale markets." },
+      { "title": "Compliance", "text": "Ensuring that products conform to private and governmental conditions and specifications." },
+      { "title": "Neutrality", "text": "We are a neutral third party that enhances transparency and credibility of commercial mediation." }
+    ]
+  },
+  "coreValues": {
+    "heading": "Core Values",
+    "title": "Our Principles",
+    "items": [
+      { "title": "Integrity", "text": "We operate with complete transparency and are honest in our dealings." },
+      { "title": "Accuracy", "text": "We are meticulous when approving applications to ensure all details are correct and meet specifications." },
+      { "title": "Leadership", "text": "We keep pace with the latest developments and changes in global trade systems to provide the best solutions." }
+    ]
+  },
+  "tourism": {
+    "heading": "Tourism",
+    "title": "A Unique Tourism Experience to China",
+    "text": "Tourism is a concept and an innovation. China is not just a destination. It is a story you tell yourself, a journey through five thousand years of history and civilization, blended with the latest modern technologies. We offer it as a unique tourism experience that combines authenticity and modernity, nature and cities, tranquility and excitement. With us, linguistic, cultural and geographical challenges disappear, in accordance with strategic partnerships and the Kingdom of Saudi Arabia’s Vision 2023."
+  },
+  "why": {
+    "heading": "Why Choose Us",
+    "title": "Ensuring Superior Solutions at ROCK BRIDGE For Optimal Business Performance",
+    "items": [
+      { "title": "100% Guarantee", "text": "Tincidunt facilisis massa. Orci leo Nunc auctor dignissim." },
+      { "title": "Fast Response", "text": "Tincidunt facilisis massa. Orci leo Nunc auctor dignissim." },
+      { "title": "Experience Team", "text": "Tincidunt facilisis massa. Orci leo Nunc auctor dignissim." },
+      { "title": "Good Quality", "text": "Tincidunt facilisis massa. Orci leo Nunc auctor dignissim." }
+    ]
+  },
+  "contactCTA": {
+    "title": "Discuss Your Shipping Needs",
+    "subtitle": "With Our Experts!",
+    "text": "Tristique pharetra nunc sed amet viverra non non libero. Eget turpis ac pretium amet dapibus nullam at bibendum.",
+    "cta": "Contact Us"
+  },
+  "newsletter": {
+    "title": "Subscribe Our Newsletter To Get The Latest News From Us!",
+    "subtitle": "Sign up and stay updated with our latest offers and company news.",
+    "placeholder": "Your Email",
+    "subscribe": "Subscribe"
+  },
+  "footer": {
+    "about": "ROCK BRIDGE - Commercial mediation and export/import solutions tailored for global markets.",
+    "quickLinks": "Quick Link",
+    "ourService": "Our Service",
+    "contact": {
+      "consultations": "Consultations",
+      "phone": "+8613711197481/+8660540846666",
+      "support": "Support",
+      "email": "Window.ksa30@gmail.com"
+    },
+    "copyright": "ROCK BRIDGE © {year}. All rights reserved."
+  },
+  "common": {
+    "readMore": "More About Us",
+    "imagePlaceholder": "Image Placeholder",
+    "phone": "Phone"
+  }
+}
