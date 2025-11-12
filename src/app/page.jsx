@@ -6,6 +6,7 @@ import useTranslation from "./lib/useTranslation";
 import Image from "next/image";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 /* -------------------------
    Motion variants (subtle)
@@ -71,14 +72,14 @@ function WhatsAppCard({ t }) {
     >
       <h3 className="font-bold text-lg mb-4 text-[#003767]">{title}</h3>
       <p className="text-sm text-gray-600 mb-4">{desc}</p>
-      <button
+      <Link
         href="https://wa.me/+8613711197481"
         target="_blank"
         rel="noopener noreferrer"
         className="flex w-full  hover:scale-101 transition-all duration-300 cursor-pointer  flex-col items-center justify-center gap-1 bg-[#25D366] text-white py-3 rounded-md font-semibold hover:bg-[#1ebe5b]"
       >
         <span className="text-lg">💬 {cta}</span>
-      </button>
+      </Link>
     </motion.div>
   );
 }
