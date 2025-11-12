@@ -47,7 +47,7 @@ const handleEmail = () => {
 /* --- Small UI blocks --- */
 function ServicePill({ icon, children }) {
   return (
-    <div className="flex items-center gap-3 px-4 py-3 bg-white rounded-xl shadow-lg min-w-[180px] font-semibold text-gray-800 border border-gray-100">
+    <div className="flex hover:scale-103 transition-all duration-300 items-center gap-3 px-4 py-3 bg-white rounded-xl shadow-lg min-w-[180px] font-semibold text-gray-800 border border-gray-100">
       <div className="w-9 h-9 flex items-center justify-center bg-[#9d1e17] text-white rounded-lg text-lg" aria-hidden>
         {icon}
       </div>
@@ -71,14 +71,14 @@ function WhatsAppCard({ t }) {
     >
       <h3 className="font-bold text-lg mb-4 text-[#003767]">{title}</h3>
       <p className="text-sm text-gray-600 mb-4">{desc}</p>
-      <a
+      <button
         href="https://wa.me/+8613711197481"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex flex-col items-center justify-center gap-1 bg-[#25D366] text-white py-3 rounded-md font-semibold hover:bg-[#1ebe5b] transition"
+        className="flex w-full  hover:scale-101 transition-all duration-300 cursor-pointer  flex-col items-center justify-center gap-1 bg-[#25D366] text-white py-3 rounded-md font-semibold hover:bg-[#1ebe5b]"
       >
         <span className="text-lg">💬 {cta}</span>
-      </a>
+      </button>
     </motion.div>
   );
 }
@@ -108,7 +108,7 @@ function ServicesSection({ t }) {
           <div className="flex items-center justify-center gap-3 mb-5">
             <span className="text-5xl text-[#9d1e17] font-bold uppercase">{heading}</span>
           </div>
-          <h2 className="text-2xl lg:text-3xl lg:text-4xl font-bold text-[#003767] mb-2">{title}</h2>
+          <h2 className="text-2xl  lg:text-4xl font-bold text-[#003767] mb-2">{title}</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">{subtitle}</p>
         </div>
 
@@ -117,7 +117,7 @@ function ServicesSection({ t }) {
             <motion.article
               key={card.title + index}
               variants={fadeUp}
-              className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col"
+              className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col hover:scale-102 transition-all duration-300 "
             >
               <div className="h-44 w-full bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
                 {/* keep your image markup: fall back to image placeholder list from translations */}
@@ -205,7 +205,7 @@ function DistinguishSection({ t }) {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((f) => (
-            <motion.div key={f.title} variants={fadeUp} className="bg-white p-6 rounded-lg shadow">
+            <motion.div key={f.title} variants={fadeUp} className="bg-white p-6 rounded-lg shadow hover:scale-103 transition-all duration-300">
               <div className="w-12 h-12 bg-[#9d1e17] text-white rounded-md flex items-center justify-center mb-4">✓</div>
               <h4 className="font-semibold mb-2">{f.title}</h4>
               <p className="text-sm text-gray-600">{f.text}</p>
@@ -233,7 +233,7 @@ function CoreValuesSection({ t }) {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {values.map((v) => (
-            <motion.div key={v.title} variants={fadeUp} className="bg-gray-50 p-6 rounded-lg shadow">
+            <motion.div key={v.title} variants={fadeUp} className="bg-gray-50 p-6 rounded-lg shadow hover:scale-103 transition-all duration-300 ">
               <h4 className="font-semibold text-lg mb-2">{v.title}</h4>
               <p className="text-sm text-gray-700">{v.text}</p>
             </motion.div>
@@ -392,7 +392,7 @@ function ContactCTA({ t }) {
               <h3 className="text-xl font-semibold mb-4">{contact.title ?? "Discuss Your Shipping Needs"}</h3>
               <h2 className="text-3xl lg:text-4xl font-bold mb-4">{contact.subtitle ?? "With Our Experts!"}</h2>
               <p className="text-white/90 max-w-xl mb-6">{contact.text ?? "Tristique pharetra nunc sed amet viverra..."}</p>
-              <a href="#" className="inline-block bg-white text-[#9d1e17] px-5 py-3 rounded-md font-semibold shadow" onClick={handleEmail}>
+              <a href="#" className="inline-block bg-white text-[#9d1e17] px-5 py-3 rounded-md font-semibold shadow hover:scale-102 transition-all duration-300 " onClick={handleEmail}>
                 {contact.cta ?? "Contact Us"}
               </a>
             </div>
@@ -414,7 +414,7 @@ function NewsletterFooter({ t }) {
           <p className="text-white/80 mb-4">{n.subtitle ?? "Sign up and stay updated with our latest offers and company news."}</p>
           <div className="flex flex-col md:flex-row items-center gap-4">
             <input type="email" placeholder={n.placeholder ?? "Your Email"} className="px-4 py-3 rounded-md w-full max-w-md border focus:outline-none" />
-            <button className="bg-[#9d1e17] text-white px-5 py-3 rounded-md font-semibold">{n.subscribe ?? "Subscribe"}</button>
+            <button className="bg-[#9d1e17] text-white px-5 py-3 rounded-md font-semibold hover:scale-102 cursor-pointer transition-all duration-300 ">{n.subscribe ?? "Subscribe"}</button>
           </div>
         </div>
 
@@ -485,7 +485,7 @@ export default function Page() {
             <Image src="/images/logo.png" alt={t?.site?.name ?? "ROCK BRIDGE"} width={100} height={50} className="object-contain" />
           </div>
           <div className="flex items-center gap-3">
-            <button className="bg-[#9d1e17] text-white px-3 py-2 rounded-md" onClick={handleEmail}>{t?.nav?.contact ?? "Contact us"}</button>
+            <button className="bg-[#9d1e17] text-white px-3 py-2 rounded-md cursor-pointer" onClick={handleEmail}>{t?.nav?.contact ?? "Contact us"}</button>
             <LanguageToggle />
           </div>
         </div>
@@ -501,7 +501,7 @@ export default function Page() {
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#003767] leading-tight mb-6">{heroTitle}</h1>
 
             <div className="flex items-center gap-4 mb-8">
-              <button className="inline-block bg-[#003767] text-white font-semibold px-6 py-3 rounded-lg transition text-sm" onClick={handleScroll}>
+              <button className="inline-block bg-[#003767] text-white font-semibold px-6 py-3 rounded-lg cursor-pointer text-sm  hover:scale-103 transition-all duration-300 " onClick={handleScroll}>
                 {heroCta}
               </button>
             </div>
