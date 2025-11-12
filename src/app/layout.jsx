@@ -21,7 +21,6 @@ export const metadata = {
   },
   description:
     "ROCK BRIDGE provides world-class import, export, and commercial mediation services with reliability, transparency, and speed. We connect your business to global markets with confidence.",
-
   // 🔹 Author & Publisher Info
   authors: [{ name: "ROCK BRIDGE", url: "https://rock-bridge.vercel.app" }],
   creator: "ROCK BRIDGE Team",
@@ -79,7 +78,6 @@ export const metadata = {
   },
 
   // 🔹 Theme and viewport
-  themeColor: "#9d1e17",
   viewport: {
     width: "device-width",
     initialScale: 1,

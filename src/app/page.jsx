@@ -5,6 +5,33 @@ import LanguageToggle from "./components/LanguageToggle";
 import useTranslation from "./lib/useTranslation";
 import Image from "next/image";
 import ScrollToTopButton from "./components/ScrollToTopButton";
+import { motion } from "framer-motion";
+
+/* -------------------------
+   Motion variants (subtle)
+   ------------------------- */
+const containerStagger = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08, delayChildren: 0.06 },
+  },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 14 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
+};
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
+const smallPop = {
+  hidden: { opacity: 0, scale: 0.98 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.45, ease: "easeOut" } },
+};
 
 const handleScroll = () => {
   window.scrollTo({
@@ -16,7 +43,6 @@ const handleScroll = () => {
 const handleEmail = () => {
   window.location.href = "mailto:Window.ksa30@gmail.com";
 };
-
 
 /* --- Small UI blocks --- */
 function ServicePill({ icon, children }) {
@@ -36,7 +62,13 @@ function WhatsAppCard({ t }) {
   const cta = t?.whatsapp?.cta ?? "Chat on WhatsApp";
 
   return (
-    <div className="bg-white rounded-xl shadow-2xl p-6 w-full max-w-sm text-center">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={smallPop}
+      className="bg-white rounded-xl shadow-2xl p-6 w-full max-w-sm text-center"
+    >
       <h3 className="font-bold text-lg mb-4 text-[#003767]">{title}</h3>
       <p className="text-sm text-gray-600 mb-4">{desc}</p>
       <a
@@ -45,15 +77,14 @@ function WhatsAppCard({ t }) {
         rel="noopener noreferrer"
         className="flex flex-col items-center justify-center gap-1 bg-[#25D366] text-white py-3 rounded-md font-semibold hover:bg-[#1ebe5b] transition"
       >
-        <span className="text-lg">💬 {cta}</span> 
+        <span className="text-lg">💬 {cta}</span>
       </a>
-    </div>
+    </motion.div>
   );
 }
 
 /* --- Services grid (reads from translation) --- */
 function ServicesSection({ t }) {
-  // prefer structured cards from translations; fallback to minimal list
   const cards = t?.servicesSection?.cards ?? [
     { title: "Tests and Quality Measurement", description: "Professional service to support the process, ensuring compliance, quality and timely delivery." },
     { title: "Production lines and spare parts", description: "Professional service to support the process, ensuring compliance, quality and timely delivery." },
@@ -65,7 +96,13 @@ function ServicesSection({ t }) {
   const subtitle = t?.servicesSection?.subheading ?? "We provide a wide range of services to support your business needs.";
 
   return (
-    <section className="py-20 bg-gray-50">
+    <motion.section
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.12 }}
+      variants={containerStagger}
+      className="py-20 bg-gray-50"
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-10">
           <div className="flex items-center justify-center gap-3 mb-5">
@@ -76,20 +113,25 @@ function ServicesSection({ t }) {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {cards.map((card,index) => (
-            <article key={card.title} className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+          {cards.map((card, index) => (
+            <motion.article
+              key={card.title + index}
+              variants={fadeUp}
+              className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col"
+            >
               <div className="h-44 w-full bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
-                <img src={t?.servicesSection?.placeholderImage[index]} alt={"Image Placeholder"} className="object-cover w-full h-full"/>
+                {/* keep your image markup: fall back to image placeholder list from translations */}
+                <img src={t?.servicesSection?.placeholderImage?.[index] ?? "/images/im-placeholder.jpg"} alt={"Image Placeholder"} className="object-cover w-full h-full" />
               </div>
               <div className="p-6 flex-1">
                 <h3 className="text-lg font-semibold mb-2">{card.title}</h3>
                 <p className="text-sm text-gray-600">{card.description ?? card.text}</p>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
@@ -97,10 +139,16 @@ function ServicesSection({ t }) {
 function WhoAreWeSection({ t }) {
   const who = t?.who ?? {};
   return (
-    <section className="py-20 bg-white md:mt-50 ">
+    <motion.section
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.12 }}
+      variants={containerStagger}
+      className="py-20 bg-white md:mt-50 "
+    >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          <div>
+          <motion.div variants={fadeUp}>
             <h3 className="text-4xl text-[#9d1e17] font-bold uppercase mb-2">{who.heading ?? "Who are we?"}</h3>
             <h2 className="text-2xl lg:text-3xl font-bold text-[#003767] mb-4">{who.company ?? "ROCK BRIDGE Import and Export Company"}</h2>
 
@@ -111,29 +159,29 @@ function WhoAreWeSection({ t }) {
 
             <h4 className="font-semibold text-2xl lg:text-3xl  text-[#003767] mt-4">{who.messageTitle ?? "Our Message"}</h4>
             <p className="text-gray-700">{who.messageText ?? ""}</p>
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col gap-6">
+          <motion.div className="flex flex-col gap-6" variants={fadeUp}>
             <div className="rounded-xl overflow-hidden shadow-lg">
-              <Image src="/images/poster.png" alt={"ROCK BRIDGE"} width={700} height={420} className="w-full h-auto object-cover" />
+              <Image src="/images/poster.png" alt={who.company ?? "ROCK BRIDGE"} width={700} height={420} className="w-full h-auto object-cover" />
             </div>
 
             <div className="flex flex-col md:flex-row gap-4">
-              <div className="bg-[#f8fafc] p-4 rounded-lg shadow">
+              <motion.div variants={smallPop} className="bg-[#f8fafc] p-4 rounded-lg shadow">
                 <div className="font-bold text-xl text-[#9d1e17]">{who.experienceCount ?? "16+"}</div>
                 <div className="text-sm text-gray-600">{t?.who?.experienceLabel ?? "Years Experience"}</div>
-              </div>
+              </motion.div>
 
-              <div className="bg-[#f8fafc] p-4 rounded-lg shadow">
+              <motion.div variants={smallPop} className="bg-[#f8fafc] p-4 rounded-lg shadow">
                 <div className="text-xs text-gray-500">{t?.who?.headquartersLabel ?? "Headquarters"}</div>
                 <div className="font-bold text-xl text-[#9d1e17]">{who.headquartersValue ?? "Saudi Arabia"}</div>
                 <div className="text-sm text-gray-600">Operating locally & internationally</div>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
@@ -148,24 +196,24 @@ function DistinguishSection({ t }) {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.12 }} variants={containerStagger} className="py-16 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-8">
-          <h3 className="md:text-4xl text-2xl  text-[#9d1e17] font-bold uppercase mb-2">{t?.distinguish?.heading ?? "What distinguishes us"}</h3>
-          <h2 className="text-xl md:text-2xl font-bold text-[#003767]">{t?.distinguish?.title ?? "Why choose ROCK BRIDGE"}</h2>
+          <motion.h3 variants={fadeUp} className="md:text-4xl text-2xl  text-[#9d1e17] font-bold uppercase mb-2">{t?.distinguish?.heading ?? "What distinguishes us"}</motion.h3>
+          <motion.h2 variants={fadeUp} className="text-xl md:text-2xl font-bold text-[#003767]">{t?.distinguish?.title ?? "Why choose ROCK BRIDGE"}</motion.h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((f) => (
-            <div key={f.title} className="bg-white p-6 rounded-lg shadow">
+            <motion.div key={f.title} variants={fadeUp} className="bg-white p-6 rounded-lg shadow">
               <div className="w-12 h-12 bg-[#9d1e17] text-white rounded-md flex items-center justify-center mb-4">✓</div>
               <h4 className="font-semibold mb-2">{f.title}</h4>
               <p className="text-sm text-gray-600">{f.text}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
@@ -178,21 +226,21 @@ function CoreValuesSection({ t }) {
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.12 }} variants={containerStagger} className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-6 lg:px-8 text-center">
-        <h3 className="text-4xl text-[#9d1e17] font-bold uppercase mb-10">{t?.coreValues?.heading ?? "Core Values"}</h3>
-        <h2 className="text-2xl font-bold text-[#003767] mb-6">{t?.coreValues?.title ?? "Our Principles"}</h2>
+        <motion.h3 variants={fadeUp} className="text-4xl text-[#9d1e17] font-bold uppercase mb-10">{t?.coreValues?.heading ?? "Core Values"}</motion.h3>
+        <motion.h2 variants={fadeUp} className="text-2xl font-bold text-[#003767] mb-6">{t?.coreValues?.title ?? "Our Principles"}</motion.h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {values.map((v) => (
-            <div key={v.title} className="bg-gray-50 p-6 rounded-lg shadow">
+            <motion.div key={v.title} variants={fadeUp} className="bg-gray-50 p-6 rounded-lg shadow">
               <h4 className="font-semibold text-lg mb-2">{v.title}</h4>
               <p className="text-sm text-gray-700">{v.text}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
@@ -200,9 +248,9 @@ function CoreValuesSection({ t }) {
 function TourismSection({ t }) {
   const tourism = t?.tourism ?? {};
   return (
-    <section className="py-16 bg-gray-50">
+    <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.12 }} variants={containerStagger} className="py-16 bg-gray-50">
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
-        <div className="bg-white rounded-xl shadow-lg p-8">
+        <motion.div variants={fadeUp} className="bg-white rounded-xl shadow-lg p-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
             <div>
               <h3 className="text-4xl text-[#9d1e17] font-bold uppercase mb-10">{tourism.heading ?? "Tourism"}</h3>
@@ -214,9 +262,9 @@ function TourismSection({ t }) {
               <div className="h-48 bg-gray-100 flex items-center justify-center text-gray-400"><img src="/images/tr.jpg" alt="tourism" /></div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
@@ -230,7 +278,7 @@ function WhyChooseSection({ t }) {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.12 }} variants={containerStagger} className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-1 gap-10 items-center">
           <div>
@@ -242,28 +290,19 @@ function WhyChooseSection({ t }) {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {items.map((it) => (
-                <div key={it.title} className="flex items-start gap-4">
+                <motion.div key={it.title} variants={fadeUp} className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-[#9d1e17] rounded-lg flex items-center justify-center text-white text-xl">✓</div>
                   <div>
                     <h4 className="font-semibold">{it.title}</h4>
                     <p className="text-sm text-gray-600">{it.text}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
-
-          {/* <div className="flex items-center justify-center">
-            <div className="relative rounded-lg overflow-hidden shadow-xl max-w-md w-full">
-              <Image src="/images/why-choose.jpg" alt="Why choose us" width={720} height={480} className="w-full h-auto object-cover" priority />
-              <a href="#" className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
-                <div className="w-16 h-16 bg-[#9d1e17] rounded-full flex items-center justify-center text-white text-2xl">▶</div>
-              </a>
-            </div>
-          </div> */}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
@@ -280,7 +319,7 @@ function AboutUsSection({ t }) {
   ];
 
   return (
-    <section className="py-24 bg-white">
+    <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.12 }} variants={containerStagger} className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="relative">
@@ -318,10 +357,10 @@ function AboutUsSection({ t }) {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                 {features.map((f) => (
-                  <div key={f} className="flex items-start gap-3">
+                  <motion.div variants={fadeUp} key={f} className="flex items-start gap-3">
                     <div className="mt-1 text-[#9d1e17]">✔</div>
                     <div className="font-semibold text-gray-800">{f}</div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
 
@@ -332,14 +371,14 @@ function AboutUsSection({ t }) {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
 function ContactCTA({ t }) {
   const contact = t?.contactCTA ?? {};
   return (
-    <section className="py-20">
+    <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.12 }} variants={fadeUp} className="py-20">
       <div className="">
         <div className="relative bg-[#9d1e17] overflow-hidden py-10">
           <div className="absolute inset-0 bg-[#9d1e17]" />
@@ -360,7 +399,7 @@ function ContactCTA({ t }) {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
@@ -368,7 +407,7 @@ function ContactCTA({ t }) {
 function NewsletterFooter({ t }) {
   const n = t?.newsletter ?? {};
   return (
-    <section className="max-w-7xl mx-auto px-6 lg:px-8 mt-20 relative -top-20">
+    <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.12 }} variants={fadeUp} className="max-w-7xl mx-auto px-6 lg:px-8 mt-20 relative -top-20">
       <div className="bg-[#08355a] rounded-xl shadow-xl p-8 mt- flex flex-col md:flex-row items-center gap-6 md:gap-12">
         <div className="flex-1">
           <h3 className="text-2xl font-bold text-white mb-2">{n.title ?? "Subscribe Our Newsletter To Get The Latest News From Us!"}</h3>
@@ -383,7 +422,7 @@ function NewsletterFooter({ t }) {
           <Image src="/images/newsletter-person.png" alt="Delivery person" fill className="object-contain" />
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
@@ -392,7 +431,7 @@ function Footer({ t }) {
   const footerAbout = t?.footer?.about ?? t?.footer ?? "ROCK BRIDGE - Commercial mediation and export/import solutions tailored for global markets.";
 
   return (
-    <footer className="mt-16 bg-[#9d1e17] text-white">
+    <motion.footer initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.12 }} variants={fadeIn} className="mt-16 bg-[#9d1e17] text-white">
       <NewsletterFooter t={t} />
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -400,7 +439,7 @@ function Footer({ t }) {
             <Image src="/images/logo.png" alt={t?.site?.name ?? "ROCK BRIDGE"} width={160} height={48} className="object-contain mb-4" />
             <p className="text-white/80 mb-6">{footerAbout}</p>
           </div>
-      
+
           <div>
             <h4 className="font-semibold mb-4">{t?.footer?.contactHeading ?? "Contact Us"}</h4>
             <div className="flex items-start gap-3 mb-4">
@@ -426,22 +465,21 @@ function Footer({ t }) {
           Developed by Fares Mohamed
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }
 
 /* --- Final Page EXPORT --- */
 export default function Page() {
   const { t, loading } = useTranslation();
-  // top-level hero values:
   const heroTag = t?.hero?.tagline ?? (t?.heroTagline ?? "LOGISTIC CARGO & TRANSPORTATION");
   const heroTitle = loading ? "..." : (t?.title ?? t?.hero?.title ?? "Connecting Your Business To The World Through Reliable Logistics");
   const heroCta = t?.hero?.cta ?? "Our Service";
-  
+
   return (
     <main className="min-h-screen bg-white font-sans text-gray-900 relative ">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white">
+      <motion.header initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeIn} className="sticky top-0 z-50 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0 flex items-center justify-between">
           <div className="flex items-center gap-6">
             <Image src="/images/logo.png" alt={t?.site?.name ?? "ROCK BRIDGE"} width={100} height={50} className="object-contain" />
@@ -451,14 +489,14 @@ export default function Page() {
             <LanguageToggle />
           </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* Hero / decorative */}
       <div className="w-full h-[620px] md:h-[720px] lg:h-[820px] bg-[url('/images/bgg.jpg')] bg-center bg-cover" />
 
-      <section className="-mt-[520px] md:-mt-[600px] lg:-mt-[700px] max-w-7xl mx-auto px-6 sm:px-8 lg:px-0 relative">
+      <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={containerStagger} className="-mt-[520px] md:-mt-[600px] lg:-mt-[700px] max-w-7xl mx-auto px-6 sm:px-8 lg:px-0 relative">
         <div className="flex flex-col lg:flex-row items-start gap-8">
-          <div className="w-full lg:w-1/2 z-20">
+          <motion.div variants={fadeUp} className="w-full lg:w-1/2 z-20">
             <p className="text-[#9d1e17] font-bold text-[16px] sm:text-[20px] tracking-wide mb-6">{heroTag}</p>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#003767] leading-tight mb-6">{heroTitle}</h1>
 
@@ -471,9 +509,9 @@ export default function Page() {
             <div className="mt-8 lg:mt-20">
               <WhatsAppCard t={t} />
             </div>
-          </div>
+          </motion.div>
 
-          <div className="w-full lg:w-1/2 relative flex items-end justify-end">
+          <motion.div variants={fadeUp} className="w-full lg:w-1/2 relative flex items-end justify-end">
             <div className="hidden lg:flex flex-col gap-4 absolute top-24 right-16 z-30">
               <ServicePill icon="✈">{t?.servicesPill?.air ?? "Air Freight"}</ServicePill>
               <ServicePill icon="⚓">{t?.servicesPill?.ocean ?? "Ocean Freight"}</ServicePill>
@@ -492,9 +530,9 @@ export default function Page() {
                 sizes="(max-width: 640px) 300px, (max-width: 1024px) 700px, 1200px"
               />
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* New content sections */}
       <WhoAreWeSection t={t} />
@@ -505,7 +543,6 @@ export default function Page() {
 
       {/* Keep existing helpful sections */}
       <WhyChooseSection t={t} />
-      {/* <AboutUsSection t={t} /> */}
       <ContactCTA t={t} />
 
       {/* utility and footer */}
