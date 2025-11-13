@@ -15,7 +15,8 @@
   "hero": {
     "tagline": "ROCK BRIDGE - Import & Export",
     "cta": "Our Service",
-    "subtitle": "We connect your business with global markets through ROCK BRIDGE solutions."
+    "subtitle": "We connect your business with global markets through ROCK BRIDGE solutions.",
+    "description": "Import & sourcing solutions from China to Saudi Arabia with reliable delivery and competitive pricing. Request an offer now."
   },
   "whatsapp": {
     "title": "Contact Us on WhatsApp",
@@ -39,7 +40,7 @@
       "/images/im13.jpg",
       "/images/im14.jpg",
       "/images/im15.jpg"
-    ], 
+    ],
     "cards": [
       {
         "title": "Tests and Quality Measurement",
@@ -94,14 +95,17 @@
   "who": {
     "heading": "Who are we?",
     "company": "ROCK BRIDGE Import and Export Company",
-    "description": "We believe our success begins with an effective customer experience. We offer a wide range of innovative and distinguished assets, solutions, and services. We are a Saudi company and we work according to your ambitions and goals from within the country, aligned with our culture and social values.",
+    "description": "For more than 16 years we have operated at the heart of Chinese and Gulf markets, building bridges between suppliers and importers to simplify trade with the highest levels of efficiency and trust.\n\nWe maintain long-standing relationships with trusted Chinese factories, Saudi and Gulf suppliers and traders, and logistics partners including major carriers to ensure fast execution and smooth operations from origin to final destination.\n\nWe believe our success starts with the success of our clients, so we always deliver innovative, secure sourcing solutions that balance quality, cost and on-time performance.",
     "visionTitle": "Our Vision",
-    "visionText": "To be the leading and globally recognized entity in providing commercial mediation, empowerment and representation solutions through global markets with confidence and professionalism. Establish tangible strategic partnerships through integrated relationships based on the foundations and standards of common interests for growth, success and development.",
+    "visionText": "To be the leading provider of commercial mediation and comprehensive sourcing solutions between China and the Gulf, building long-term strategic partnerships grounded in trust, transparency and shared interests to support client growth and market prosperity.",
     "messageTitle": "Our Message",
-    "messageText": "Providing reliable, comprehensive and impartial inspection and review services to ensure compliance with international requirements and specifications while adhering to the highest quality standards.",
+    "messageText": "Providing reliable, comprehensive inspection, review and follow-up services to ensure suppliers and products meet the highest international quality and specification standards — delivering a secure, precise and sustainable import experience for every client.",
+    "experienceCount": "16+",
     "experienceLabel": "Years Experience",
     "headquartersLabel": "Headquarters",
-    "headquartersValue": "Saudi Arabia"
+    "headquartersValue": "Saudi Arabia",
+    "operating": "Operating locally & internationally",
+    "image": "/images/poster.png"
   },
   "about": {
     "heading": "About Us",
@@ -114,24 +118,29 @@
     "title": "Why choose ROCK BRIDGE",
     "items": [
       {
-        "title": "Experience",
-        "text": "In-depth knowledge of the technical regulations and regulatory legislation of the target countries."
+        "key": "prices",
+        "title": "Competitive Prices",
+        "text": "Competitive pricing and guaranteed quality through a wide network of trusted factories and global markets, with our commitment to the best cost-to-value balance."
       },
       {
+        "key": "speed",
         "title": "Speed",
-        "text": "Reducing waiting time through the ability to complete processes from manufacturing and shipping to the final destination."
+        "text": "Fast execution for all supply stages — from order to delivery — thanks to smart logistics management and continuous coordination with suppliers and shipping lines."
       },
       {
-        "title": "Prices",
-        "text": "Guaranteed competitive prices and high quality through a wide network of factories and wholesale markets."
+        "key": "experience",
+        "title": "Experience",
+        "text": "Over 15 years of experience in technical regulations and regulatory legislation of target countries, ensuring smooth customs clearance and speedy procedures."
       },
       {
-        "title": "Compliance",
-        "text": "Ensuring that products conform to private and governmental conditions and specifications."
-      },
-      {
+        "key": "neutrality",
         "title": "Neutrality",
-        "text": "We are a neutral third party that enhances transparency and credibility of commercial mediation."
+        "text": "We act as a neutral commercial intermediary working exclusively for the client, guaranteeing full transparency and credibility at every step of the purchase and supply process."
+      },
+      {
+        "key": "compliance",
+        "title": "Compliance",
+        "text": "We perform careful reviews to ensure products meet local and governmental specifications, guaranteeing that your goods arrive with the highest standards of quality and compliance."
       }
     ]
   },
@@ -163,20 +172,24 @@
     "title": "Ensuring Superior Solutions at ROCK BRIDGE For Optimal Business Performance",
     "items": [
       {
-        "title": "100% Guarantee",
-        "text": "Tincidunt facilisis massa. Orci leo Nunc auctor dignissim."
+        "key": "network",
+        "title": "Trusted Factory Network",
+        "text": "Certified factory network in China and the Gulf."
       },
       {
-        "title": "Fast Response",
-        "text": "Tincidunt facilisis massa. Orci leo Nunc auctor dignissim."
+        "key": "incoterms",
+        "title": "Clear Customs & Incoterms",
+        "text": "Clear customs estimates and Incoterms provided before execution."
       },
       {
-        "title": "Experience Team",
-        "text": "Tincidunt facilisis massa. Orci leo Nunc auctor dignissim."
+        "key": "transit",
+        "title": "Competitive Transit Times",
+        "text": "Competitive shipping times with real-time tracking and active monitoring."
       },
       {
-        "title": "Good Quality",
-        "text": "Tincidunt facilisis massa. Orci leo Nunc auctor dignissim."
+        "key": "compliance",
+        "title": "Specification Compliance",
+        "text": "Commitment to specification matching and required testing to ensure quality and conformity."
       }
     ]
   },
@@ -208,5 +221,41 @@
     "readMore": "More About Us",
     "imagePlaceholder": "Image Placeholder",
     "phone": "Phone"
+  },
+  "howWeWork": {
+    "title": "How We Work",
+    "subtitle": "5 illustrated steps to move your shipments",
+    "steps": [
+      {
+        "id": 1,
+        "title": "Request a Quote",
+        "desc": "Send us details about your cargo and requirements.",
+        "icon": "request"
+      },
+      {
+        "id": 2,
+        "title": "HS Code Review",
+        "desc": "We review product HS codes and compliance requirements.",
+        "icon": "search"
+      },
+      {
+        "id": 3,
+        "title": "Pricing & Incoterms",
+        "desc": "Receive pricing and recommended Incoterms for your shipment.",
+        "icon": "price"
+      },
+      {
+        "id": 4,
+        "title": "Ship / Inspect",
+        "desc": "We handle shipment execution and inspection as needed.",
+        "icon": "ship"
+      },
+      {
+        "id": 5,
+        "title": "Delivery & Clearance",
+        "desc": "Final delivery and customs clearance handled end-to-end.",
+        "icon": "delivery"
+      }
+    ]
   }
 }
