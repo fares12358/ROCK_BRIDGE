@@ -16,6 +16,7 @@ import { WhyChooseSection } from "./components/WhyChooseSection";
 import { ContactCTA } from "./components/ContactCTA";
 import HowWeWorkSection from "./components/HowWeWorkSection";
 import Link from "next/link";
+import MarketsAndSectorsSection from "./components/MarketsAndSectorsSection";
 
 /* -------------------------
    Motion variants (subtle)
@@ -400,59 +401,75 @@ export default function Page() {
 
       {/* HERO SLIDER */}
       <section aria-label="Hero slider" className="relative w-full min-h-[calc(100vh)] overflow-hidden select-none" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        {/* media layer */}
         <div className="absolute inset-0">
           <AnimatePresence initial={false} mode="wait">
             {slides.map((slide, i) => i === index && (
               <motion.div key={slide.id} variants={slideIn} initial="initial" animate="animate" exit="exit" className="absolute inset-0 z-10">
                 {slide.type === "image" ? (
-                  <div className="w-full h-full relative">
+                  <div className="w-full h-full relative filter brightness-75">
                     <Image src={slide.src} alt={slide.alt ?? ""} fill style={{ objectFit: "cover", objectPosition: "center" }} priority />
                   </div>
                 ) : (
-                  <video ref={(el) => { if (el) videoRefs.current[slide.id] = el; }} className="w-full h-full object-cover" src={slide.src} playsInline muted controls={false} autoPlay aria-label={slide.alt ?? "Hero video"} />
+                  <video
+                    ref={(el) => { if (el) videoRefs.current[slide.id] = el; }}
+                    className="w-full h-full object-cover filter brightness-75"
+                    src={slide.src}
+                    playsInline
+                    muted
+                    controls={false}
+                    autoPlay
+                    aria-label={slide.alt ?? "Hero video"}
+                  />
                 )}
               </motion.div>
             ))}
           </AnimatePresence>
         </div>
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/12 to-black/30 z-20 pointer-events-none" />
+        {/* stronger overlay (darker to improve contrast) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/16 to-black/65 z-20 pointer-events-none" />
 
         <div className="absolute inset-0 z-30 flex items-center">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-0 w-full">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={containerStagger} className="py-20 md:py-28 lg:py-32">
               <div className={`flex flex-col lg:flex-row items-start gap-8 ${isRTL ? "text-right" : "text-left"}`}>
                 <motion.div variants={fadeUp} className="w-full lg:w-1/2 z-20 text-white">
-                  <p className="text-white/90 font-bold text-sm sm:text-base tracking-wide mb-3">{currentSlide?.subtitle ?? heroTag}</p>
-                  <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">{currentSlide?.title ?? heroTitle}</h1>
+                  {/* Make text readable: semi-opaque panel + blur + padding + rounded + drop shadow */}
+                  <div className="inline-block bg-black/45 backdrop-blur-sm p-6 rounded-lg">
+                    <p className="text-white/90 font-bold text-sm sm:text-base tracking-wide mb-3">{currentSlide?.subtitle ?? heroTag}</p>
 
-                  <div className="flex items-center gap-4 mb-8">
-                    <button onClick={() => scrollToId("services")} className="inline-block bg-[#003767] text-white font-semibold px-6 py-3 rounded-lg cursor-pointer text-sm hover:scale-[1.03] transition-transform">
-                      {heroCta}
-                    </button>
-                    <Link href={'/get-offer'}  className="inline-block bg-white/90 text-[#003767] font-semibold px-4 py-3 rounded-lg cursor-pointer text-sm hover:scale-[1.03] transition-transform">
-                      {t?.nav?.getOffer ?? (isRTL ? "اطلب عرض" : "Get Offer")}
-                    </Link>
+                    <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6 text-white drop-shadow-[0_12px_20px_rgba(0,0,0,0.6)]">
+                      {currentSlide?.title ?? heroTitle}
+                    </h1>
 
-                    <button onClick={togglePlay} aria-pressed={isPaused} className="ml-2 inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/10 hover:bg-white/20">
-                      {isPaused ? (
-                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 3v18h4V3H5zM15 3v18h4V3h-4z" strokeWidth="1.5" /></svg>
-                      ) : (
-                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 3l14 9-14 9V3z" strokeWidth="1.5" /></svg>
-                      )}
-                      <span className="text-xs">{isPaused ? (isRTL ? "موقوف" : "Paused") : (isRTL ? "تشغيل" : "Playing")}</span>
-                    </button>
+                    <div className="flex items-center gap-4 mb-6">
+                      <button onClick={() => scrollToId("services")} className="inline-block bg-[#003767] text-white font-semibold px-6 py-3 rounded-lg cursor-pointer text-sm hover:scale-[1.03] transition-transform">
+                        {heroCta}
+                      </button>
+                      <Link href={'/get-offer'} className="inline-block bg-white/90 text-[#003767] font-semibold px-4 py-3 rounded-lg cursor-pointer text-sm hover:scale-[1.03] transition-transform">
+                        {t?.nav?.getOffer ?? (isRTL ? "اطلب عرض" : "Get Offer")}
+                      </Link>
+
+                      <button onClick={togglePlay} aria-pressed={isPaused} className="ml-2 inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/10 hover:bg-white/20">
+                        {isPaused ? (
+                          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 3v18h4V3H5zM15 3v18h4V3h-4z" strokeWidth="1.5" /></svg>
+                        ) : (
+                          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 3l14 9-14 9V3z" strokeWidth="1.5" /></svg>
+                        )}
+                        <span className="text-xs">{isPaused ? (isRTL ? "موقوف" : "Paused") : (isRTL ? "تشغيل" : "Playing")}</span>
+                      </button>
+                    </div>
+
+                    <p className="text-lg sm:text-xl lg:text-2xl font-semibold text-white/95 max-w-xl leading-relaxed whitespace-pre-line">
+                      {heroDescription}
+                    </p>
+
+                    <p className="text-sm text-white/80 max-w-xl mt-4">{t?.hero?.extra ?? ""}</p>
                   </div>
-
-                  <p className="text-lg sm:text-xl lg:text-2xl font-semibold text-white/95 max-w-xl leading-relaxed whitespace-pre-line">
-                    {heroDescription}
-                  </p>
-
-                  <p className="text-sm text-white/80 max-w-xl mt-4">{t?.hero?.extra ?? ""}</p>
                 </motion.div>
 
-                {/* Right */}
+                {/* Right side - thumbnail list and progress */}
                 <div className="w-full lg:w-1/2 z-20 flex flex-col items-stretch gap-4">
                   <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
                     <div className="h-full bg-gradient-to-r from-[#9d1e17] to-[#003767]" style={{ width: `${progress}%`, transition: "width 40ms linear" }} />
@@ -504,6 +521,7 @@ export default function Page() {
         <HowWeWorkSection t={t} />
       </section>
 
+      <MarketsAndSectorsSection t={t} />
       <section id="who" aria-labelledby="who-heading">
         <WhoAreWeSection t={t} />
       </section>
@@ -515,7 +533,6 @@ export default function Page() {
       <section id="core-values" aria-labelledby="core-values-heading">
         <CoreValuesSection t={t} />
       </section>
-
       <section id="tourism" aria-labelledby="tourism-heading">
         <TourismSection t={t} />
       </section>

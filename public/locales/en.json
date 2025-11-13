@@ -257,5 +257,39 @@
         "icon": "delivery"
       }
     ]
+  },
+  "marketsSection": {
+    "heading": "Markets & Sectors",
+    "intro": "ROCK BRIDGE has over 16 years of experience across China and GCC markets. We built an integrated network of factories, suppliers and logistics partners enabling effective, secure import & supply linking East and West.",
+    "marketsHeading": "Markets",
+    "bridgeTitle": "ROCK BRIDGE",
+    "bridgeSubtitle": "Connecting East & West",
+    "markets": [
+      {
+        "key": "china",
+        "title": "🇨🇳 China",
+        "description": "Direct cooperation with certified factories and trusted suppliers for production lines, spares and raw materials."
+      },
+      {
+        "key": "saudi",
+        "title": "🇸🇦 Saudi Arabia",
+        "description": "Serving the Saudi market through a strong local partner network across trade, construction, consumer goods and government projects."
+      },
+      {
+        "key": "gcc",
+        "title": "🌐 GCC Markets",
+        "description": "Coverage across GCC with strategic suppliers and logistics partners to ensure fast, compliant supply operations."
+      }
+    ],
+    "sectorsHeading": "Sectors We Serve",
+    "sectors": [
+      "Automotive spare parts supply",
+      "Contract manufacturing (OEM)",
+      "E-commerce and wholesale supply",
+      "Production lines & manufacturing",
+      "Logistics & transportation",
+      "Brand development & commercial agencies",
+      "Business & tourism trips to China"
+    ]
   }
 }
