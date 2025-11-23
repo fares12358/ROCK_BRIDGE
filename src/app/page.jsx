@@ -17,6 +17,7 @@ import { ContactCTA } from "./components/ContactCTA";
 import HowWeWorkSection from "./components/HowWeWorkSection";
 import Link from "next/link";
 import MarketsAndSectorsSection from "./components/MarketsAndSectorsSection";
+import OurWorkSection from "./components/OurWorkSection";
 
 /* -------------------------
    Motion variants (subtle)
@@ -282,7 +283,7 @@ export default function Page() {
   };
 
   const handleWhatsApp = () => {
-    const number = formatWa(getWhatsappNumber());
+    const number = '+8613711197481';
     if (!number) {
       window.open("https://web.whatsapp.com/", "_blank");
       return;
@@ -302,15 +303,18 @@ export default function Page() {
       {/* Glass Header / Nav */}
       <motion.header initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} className="absolute inset-x-0 top-0 z-50" aria-label="Main navigation">
         <div className="backdrop-blur-md bg-white/18 border-b border-white/8" style={{ WebkitBackdropFilter: "blur(8px)" }}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
+          <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4 ">
+            <div className="flex items-center justify-between gap-4">
               <button onClick={() => scrollToId("home")} className="flex items-center gap-3 focus:outline-none" aria-label="Home">
                 <Image src="/images/logo.png" alt={t?.site?.name ?? (isRTL ? "روك بريدج" : "ROCK BRIDGE")} width={96} height={40} className="object-contain" />
               </button>
+            </div>
+
+            <div className="hidden lg:flex items-center justify-center gap-4">
 
               {/* Slide preview */}
               {currentSlide && (
-                <div className="hidden md:flex items-center gap-3 bg-white/6 px-2 py-1 rounded-md">
+                <div className="hidden lg:flex items-center gap-3 bg-white/6 px-2 py-1 rounded-md ">
                   <div className="w-12 h-8 relative rounded-sm overflow-hidden bg-gray-200">
                     <Image src={currentSlide.src} alt={currentSlide.alt} fill style={{ objectFit: "cover" }} sizes="48px" />
                   </div>
@@ -322,7 +326,7 @@ export default function Page() {
               )}
 
               {/* Desktop nav tabs - use anchors for proper browser behavior */}
-              <nav className="hidden md:flex items-center gap-2 ml-4" aria-label="Primary">
+              <nav className="hidden lg:flex items-center justify-center gap-2 ml-4 text-xl" aria-label="Primary">
                 {navItems.map((item) => (
                   <a
                     key={item.id}
@@ -331,7 +335,7 @@ export default function Page() {
                       e.preventDefault();
                       scrollToId(item.id);
                     }}
-                    className="relative px-3 py-2 rounded-md text-sm font-medium transition-colors text-white/90 hover:text-white"
+                    className="relative px-3 py-2 rounded-md text-ةي font-medium transition-colors text-white/90 hover:text-white"
                     aria-current={activeSection === item.id ? "page" : undefined}
                   >
                     <span className={activeSection === item.id ? "text-[#003767] font-semibold" : ""}>{item.label}</span>
@@ -345,10 +349,10 @@ export default function Page() {
 
             {/* Right side */}
             <div className="flex items-center gap-3">
-              <div className="hidden sm:flex items-center gap-3">
+              <div className="hidden lg:flex items-center gap-3">
                 {/* Use button for mailto behaviour */}
                 <Link href={'/get-offer'}
-                  className="bg-[#9d1e17] text-white px-4 py-2 rounded-md text-sm font-semibold shadow-sm hover:scale-[1.02] transition-transform"
+                  className="bg-[#9d1e17] text-white px-4 py-2 rounded-md text-md font-semibold shadow-sm hover:scale-[1.02] transition-transform"
                 >
                   {t?.nav?.getOffer ?? (isRTL ? "اطلب عرض" : "Get Offer")}
                 </Link>
@@ -356,7 +360,7 @@ export default function Page() {
               </div>
 
               {/* Mobile hamburger */}
-              <div className="md:hidden flex items-center">
+              <div className="lg:hidden flex items-center">
                 <button onClick={() => setMobileOpen((s) => !s)} aria-expanded={mobileOpen} aria-label="Toggle menu" className="p-2 rounded-md bg-white/20 hover:bg-white/30">
                   <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
                     {mobileOpen ? (
@@ -372,7 +376,7 @@ export default function Page() {
 
           {/* Mobile panel */}
           {mobileOpen && (
-            <div className="md:hidden bg-white/6 backdrop-blur-sm border-t border-white/8">
+            <div className="lg:hidden bg-white/6 backdrop-blur-sm border-t border-white/8">
               <div className="px-4 py-4 space-y-3">
                 {navItems.map((item) => (
                   <a
@@ -400,7 +404,7 @@ export default function Page() {
       </motion.header>
 
       {/* HERO SLIDER */}
-      <section aria-label="Hero slider" className="relative w-full min-h-[calc(100vh)] overflow-hidden select-none" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <section aria-label="Hero slider" className="relative w-full h-[calc(70vh)] overflow-hidden select-none">
         {/* media layer */}
         <div className="absolute inset-0">
           <AnimatePresence initial={false} mode="wait">
@@ -430,13 +434,13 @@ export default function Page() {
         {/* stronger overlay (darker to improve contrast) */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/16 to-black/65 z-20 pointer-events-none" />
 
-        <div className="absolute inset-0 z-30 flex items-center">
+        <div className="absolute inset-0 z-30 flex items-center ">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-0 w-full">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={containerStagger} className="py-20 md:py-28 lg:py-32">
               <div className={`flex flex-col lg:flex-row items-start gap-8 ${isRTL ? "text-right" : "text-left"}`}>
                 <motion.div variants={fadeUp} className="w-full lg:w-1/2 z-20 text-white">
                   {/* Make text readable: semi-opaque panel + blur + padding + rounded + drop shadow */}
-                  <div className="inline-block bg-black/45 backdrop-blur-sm p-6 rounded-lg">
+                  <div className="inline-block bg-black/20 backdrop-blur-sm p-6 rounded-lg">
                     <p className="text-white/90 font-bold text-sm sm:text-base tracking-wide mb-3">{currentSlide?.subtitle ?? heroTag}</p>
 
                     <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6 text-white drop-shadow-[0_12px_20px_rgba(0,0,0,0.6)]">
@@ -470,7 +474,7 @@ export default function Page() {
                 </motion.div>
 
                 {/* Right side - thumbnail list and progress */}
-                <div className="w-full lg:w-1/2 z-20 flex flex-col items-stretch gap-4">
+                <div className="w-full lg:w-1/2 z-20 lg:flex flex-col items-stretch gap-4 hidden">
                   <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
                     <div className="h-full bg-gradient-to-r from-[#9d1e17] to-[#003767]" style={{ width: `${progress}%`, transition: "width 40ms linear" }} />
                   </div>
@@ -501,7 +505,7 @@ export default function Page() {
         </div>
 
         {/* Dots */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 bottom-6 z-40">
+        <div className="absolute left-1/2 transform -translate-x-1/2 bottom-6 z-40 hidden lg:block">
           <div className="flex gap-3 items-center">
             {slides.map((_, i) => (
               <button key={i} aria-label={`Go to slide ${i + 1}`} onClick={() => goTo(i)} className={`w-3 h-3 rounded-full transition-all ${i === index ? "scale-125 bg-white" : "bg-white/50"}`} />
@@ -515,6 +519,9 @@ export default function Page() {
 
       <section id="services" aria-labelledby="services-heading">
         <ServicesSection t={t} />
+      </section>
+      <section id="services" aria-labelledby="services-heading">
+        <OurWorkSection t={t} />
       </section>
 
       <section id="how-we-work" aria-labelledby="how-we-work-heading">

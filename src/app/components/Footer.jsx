@@ -18,7 +18,7 @@ export function Footer({ t }) {
     <motion.footer initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.12 }} variants={fadeIn} className="mt-16 bg-[#9d1e17] text-white">
       <NewsletterFooter t={t} />
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <Image src="/images/logo.png" alt={t?.site?.name ?? "ROCK BRIDGE"} width={160} height={48} className="object-contain mb-4" />
             <p className="text-white/80 mb-6">{footerAbout}</p>
@@ -30,7 +30,7 @@ export function Footer({ t }) {
               <div className="bg-white text-[#9d1e17] p-3 rounded-md">📞</div>
               <div>
                 <div className="text-sm text-white/80">{t?.footer?.contact?.consultations ?? "Consultations"}</div>
-                <div className="font-semibold">{t?.footer?.contact?.phone ?? "+8613711197481"}</div>
+                <div className="font-semibold">+9660540846666</div>
               </div>
             </div>
             <div className="flex items-start gap-3">
@@ -41,11 +41,15 @@ export function Footer({ t }) {
               </div>
             </div>
           </div>
+          <div className=" max-w-full w-[150px] rounde flex flex-col items-start gap-2 justify-start">
+            <h4 className="font-semibold">Scan to Chat</h4>
+            <img src="/images/qr.jpg" alt="qr-code" className="object-contain  rounded-md" />
+          </div>
         </div>
         <div className="border-t border-white/10 mt-10 pt-6 text-center text-white/80">
           {(t?.footer?.copyright ?? "ROCK BRIDGE © {year}. All rights reserved.").replace("{year}", String(new Date().getFullYear()))}
         </div>
-        <div className="border-t border-white/10 mt-1 pt-1 text-center text-white/20">
+        <div className="border-t border-white/10 mt-3 pt-3 text-center text-white/70">
           Developed by Fares Mohamed
         </div>
       </div>

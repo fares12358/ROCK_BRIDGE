@@ -2,12 +2,16 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function GetOfferPage() {
   const [form, setForm] = useState({ name: "", phone: "", email: "", message: "" });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState({ loading: false, success: null, error: null });
+
+  // optional base for API (set NEXT_PUBLIC_API_URL=http://localhost:5000 in .env.local if needed)
+  const API_BASE = 'http://localhost:5000';
 
   const validate = () => {
     const e = {};
@@ -22,8 +26,8 @@ export default function GetOfferPage() {
   };
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: null });
+    setForm((s) => ({ ...s, [e.target.name]: e.target.value }));
+    setErrors((prev) => ({ ...prev, [e.target.name]: null }));
   };
 
   const handleSubmit = async (e) => {
@@ -34,25 +38,30 @@ export default function GetOfferPage() {
 
     try {
       setStatus({ loading: true, success: null, error: null });
-      const res = await fetch("/api/get-offer", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
 
-      const json = await res.json();
+      const url = `${API_BASE}/api/quotes` ;
 
-      if (!res.ok) throw new Error(json?.message || "Server error");
+      const resp = await axios.post(
+        url,
+        { ...form },
+        { headers: { "Content-Type": "application/json" }, timeout: 15000 }
+      );
 
+      // success
+      toast.success(resp?.data?.message || "Request sent — we'll contact you soon");
       setStatus({ loading: false, success: "Request sent! We will contact you soon.", error: null });
       setForm({ name: "", phone: "", email: "", message: "" });
     } catch (err) {
-      setStatus({ loading: false, success: null, error: err.message || "Failed to send request" });
+      // prefer server message
+      const serverMsg = err?.response?.data?.message || (err?.response?.data && JSON.stringify(err.response.data)) || err.message;
+      toast.error(serverMsg || "Failed to send request");
+      setStatus({ loading: false, success: null, error: serverMsg || "Failed to send request" });
     }
   };
 
   return (
     <main className="min-h-screen bg-gray-50 py-16">
+      <Toaster position="top-right" />
       <div className="max-w-3xl mx-auto px-6">
         <div className="bg-white rounded-2xl shadow p-8">
           <div className="flex items-center gap-6 mb-6">
@@ -139,7 +148,11 @@ export default function GetOfferPage() {
 
               <button
                 type="button"
-                onClick={() => setForm({ name: "", phone: "", email: "", message: "" })}
+                onClick={() => {
+                  setForm({ name: "", phone: "", email: "", message: "" });
+                  setErrors({});
+                  setStatus({ loading: false, success: null, error: null });
+                }}
                 className="px-4 py-2 rounded-md border text-sm"
               >
                 Reset

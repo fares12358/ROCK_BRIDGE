@@ -16,13 +16,7 @@ export default function LanguageToggle() {
     <button
       onClick={toggle}
       aria-label="Toggle language"
-      style={{
-        padding: "8px 12px",
-        borderRadius: 8,
-        border: "1px solid #ddd",
-        background: "transparent",
-        cursor: "pointer"
-      }}
+      className="cursor-pointer bg-transparent border border-[#ddd] text-[#ddd] py-[8px] px-[12px] rounded-[8px]"
     >
       {lang === "en" ? "AR" : "EN"}
     </button>
