@@ -2,6 +2,10 @@
 
 A modern, responsive web application built with **Next.js**, providing a seamless user experience for browsing services, requesting quotes, and managing a personal dashboard.
 
+## 🌐 Live Demo
+
+**Visit the live demo**: [https://rock-bridge.vercel.app/](https://rock-bridge.vercel.app/)
+
 ## 🚀 Tech Stack
 - **Framework**: Next.js 14+ (App Router)
 - **Styling**: Tailwind CSS
